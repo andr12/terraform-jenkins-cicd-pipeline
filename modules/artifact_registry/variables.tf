@@ -1,7 +1,6 @@
 variable "location" {
   type        = string
   description = "Location of registry"
-  default     = "us-central1-a"
 }
 
 variable "repo_id" {
