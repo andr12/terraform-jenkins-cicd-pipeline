@@ -3,7 +3,7 @@ module "cluster" {
   name            = var.cluster_name
   cluster_network = var.cluster_network
   cluster_subnet  = var.cluster_subnet
-  project         = var.project
+  project         = var.project_id
   location        = "us-central1"
 
   machine_type = "n1-standard-2"

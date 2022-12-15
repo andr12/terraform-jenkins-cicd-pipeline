@@ -16,9 +16,9 @@ service_account_email = "mentorship-infra-sa@or2-msq-epm-cedu-t1iylu.iam.gservic
 
 # SQL variables
 sql_name          = "my-instance"
-DATABASE_NAME     = DATABASE_NAME
-DATABASE_USER     = DATABASE_USER
-DATABASE_PASSWORD = DATABASE_PASSWORD
+DATABASE_NAME     = "${DATABASE_NAME}"
+DATABASE_USER     = "${DATABASE_USER}"
+DATABASE_PASSWORD = "${DATABASE_PASSWORD}"
 
 # Docker repo variables
 docker_repo_id = "petclinic-repo-halka"
