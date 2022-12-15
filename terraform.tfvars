@@ -21,6 +21,5 @@ DATABASE_USER     = "${DATABASE_USER}"
 DATABASE_PASSWORD = "${DATABASE_PASSWORD}"
 
 # Docker&Maven repo variables
-location       = "us-central1"
 docker_repo_id = "petclinic-repo-halka"
 maven_repo_id  = "petclinic-repo-halka-jar"
