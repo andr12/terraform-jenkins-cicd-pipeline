@@ -1,5 +1,6 @@
 # Project wide variables
 project = "or2-msq-epm-cedu-t1iylu"
+project_id = "or2-msq-epm-cedu-t1iylu"
 region  = "us-central1"
 
 # GKE variables

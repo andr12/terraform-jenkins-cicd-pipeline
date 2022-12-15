@@ -4,6 +4,11 @@ variable "project" {
   description = "Project"
 }
 
+variable "project_id" {
+  type        = string
+  description = "Project"
+}
+
 variable "cluster_subnet" {
   type        = string
   description = "Subnet for GKE"
