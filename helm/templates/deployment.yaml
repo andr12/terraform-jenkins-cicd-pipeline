@@ -1,23 +1,23 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name: {{ .Values.main-app-name }}
+  name: {{ .Values.mainAppname }}
   labels:
-    app: {{ .Values.main-app-name }}
+    app: {{ .Values.mainAppname }}
 spec: 
   replicas: {{ .Values.replicaCount }}
   minReadySeconds: 20 
   selector: 
     matchLabels: 
-      app: {{ .Values.main-app-name }} 
+      app: {{ .Values.mainAppname }} 
   template : 
     metadata: 
       labels: 
-        app: {{ .Values.main-app-name }} 
+        app: {{ .Values.mainAppname }} 
     spec: 
       containers: 
-      - name: {{ .Values.main-app-name }} 
-        image: "{{ .Values.main-app-name-image }}:{{ .Values.main-app-name-image-tag }}"
+      - name: {{ .Values.mainAppname }} 
+        image: "{{ .Values.mainAppnameimage }}:{{ .Values.mainAppnameimagetag }}"
         ports:
         - containerPort: 8080
         env:
@@ -29,23 +29,23 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secretName }}
-                  key: {{ .Values.app.username }}
+                  key: {{ .Values.appUsername }}
             - name: MYSQL_PASS
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secretName }}
-                  key: {{ .Values.app.userpassword }}
+                  key: {{ .Values.appUserpassword }}
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.secretName }}
-                  key: {{ .Values.app.database }}      
+                  key: {{ .Values.appDatabase }}      
             - name: SPRING_PROFILES_ACTIVE 
               value: mysql       
             - name: DATASOURCE_INIT_MODE
               value: always
       - name: {{ .Values.sidecar-app-name }}
-        image: "{{ .Values.sidecar-app-name-image }}:{{ .Values.sidecar-app-name-image-tag }}" 
+        image: "{{ .Values.sidecarappnameimage }}:{{ .Values.sidecarappnameimagetag }}" 
         command:
           - "/cloud_sql_proxy"
           - "-log_debug_stdout"
