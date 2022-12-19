@@ -1,0 +1,58 @@
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  name: {{ .Values.main-app-name }}
+  labels:
+    app: {{ .Values.main-app-name }}
+spec: 
+  replicas: {{ .Values.replicaCount }}
+  minReadySeconds: 20 
+  selector: 
+    matchLabels: 
+      app: {{ .Values.main-app-name }} 
+  template : 
+    metadata: 
+      labels: 
+        app: {{ .Values.main-app-name }} 
+    spec: 
+      containers: 
+      - name: {{ .Values.main-app-name }} 
+        image: "{{ .Values.main-app-name-image }}:{{ .Values.main-app-name-image-tag }}"
+        ports:
+        - containerPort: 8080
+        env:
+            - name: DB_HOST
+              value: "127.0.0.1"
+            - name: DB_PORT
+              value: "3306" 
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secretName }}
+                  key: {{ .Values.app.username }}
+            - name: MYSQL_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secretName }}
+                  key: {{ .Values.app.userpassword }}
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secretName }}
+                  key: {{ .Values.app.database }}      
+            - name: SPRING_PROFILES_ACTIVE 
+              value: mysql       
+            - name: DATASOURCE_INIT_MODE
+              value: always
+      - name: {{ .Values.sidecar-app-name }}
+        image: "{{ .Values.sidecar-app-name-image }}:{{ .Values.sidecar-app-name-image-tag }}" 
+        command:
+          - "/cloud_sql_proxy"
+          - "-log_debug_stdout"
+          - "-instances=or2-msq-epm-cedu-t1iylu:us-central1:my-instance=tcp:3306" 
+        securityContext:
+          runAsNonRoot: true
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu:    "1"

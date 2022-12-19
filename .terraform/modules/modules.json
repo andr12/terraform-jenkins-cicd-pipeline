@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"cluster","Source":"./modules/gke","Dir":"modules/gke"},{"Key":"docker_repo","Source":"./modules/artifact_registry","Dir":"modules/artifact_registry"},{"Key":"java_repo","Source":"./modules/artifact_registry","Dir":"modules/artifact_registry"},{"Key":"sql","Source":"./modules/sql","Dir":"modules/sql"}]}
