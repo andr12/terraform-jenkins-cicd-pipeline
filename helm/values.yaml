@@ -1,4 +1,4 @@
-appDatabase: petclinic
+AppDatabase: petclinic
 appUsername: petclinic
 appUserpassword: petclinic
 mainAppname: spring-petclinic

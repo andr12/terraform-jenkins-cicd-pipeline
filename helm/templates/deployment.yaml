@@ -30,7 +30,7 @@ spec:
             - name: MYSQL_PASS
               value: {{ .Values.appUserpassword }}
             - name: DB_NAME
-              value: {{ .Values.appDatabase }}
+              value: {{ .Values.AppDatabase }}
             - name: SPRING_PROFILES_ACTIVE 
               value: mysql       
             - name: DATASOURCE_INIT_MODE
