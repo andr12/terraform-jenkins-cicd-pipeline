@@ -19,28 +19,28 @@ spec:
       - name: {{ .Values.mainAppname }} 
         image: "{{ .Values.mainAppnameimage }}:{{ .Values.mainAppnameimagetag }}"
         ports:
-        - containerPort: 8080
+        - containerPort: {{ .Values.mainAppcontainerPort }}
         env:
             - name: DB_HOST
-              value: "127.0.0.1"
+              value: {{ .Values.mainAppDatabasehost }}
             - name: DB_PORT
-              value: "3306" 
+              value: {{ .Values.mainAppDatabasePort }} 
             - name: MYSQL_USER
               value: {{ .Values.appUsername }}
             - name: MYSQL_PASS
               value: {{ .Values.appUserpassword }}
             - name: DB_NAME
-              value: {{ .Values.AppDatabase }}
+              value: {{ .Values.appDatabase }}
             - name: SPRING_PROFILES_ACTIVE 
-              value: mysql       
+              value: {{ .Values.mainAppSpringProfile }}       
             - name: DATASOURCE_INIT_MODE
-              value: always
+              value: {{ .Values.mainAppDatasourceMode }}
       - name: {{ .Values.sidecarAppname }}
         image: "{{ .Values.sidecarAppnameimage }}:{{ .Values.sidecarAppnameimagetag }}" 
         command:
           - "/cloud_sql_proxy"
           - "-log_debug_stdout"
-          - "-instances=or2-msq-epm-cedu-t1iylu:us-central1:my-instance=tcp:3306" 
+          - "-instances={{ .Values.sidecarAppConnection }}" 
         securityContext:
           runAsNonRoot: true
         resources:
