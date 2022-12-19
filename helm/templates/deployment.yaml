@@ -44,7 +44,7 @@ spec:
               value: mysql       
             - name: DATASOURCE_INIT_MODE
               value: always
-      - name: {{ .Values.sidecar-app-name }}
+      - name: {{ .Values.sidecarAppname }}
         image: "{{ .Values.sidecarappnameimage }}:{{ .Values.sidecarappnameimagetag }}" 
         command:
           - "/cloud_sql_proxy"
