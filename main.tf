@@ -37,14 +37,33 @@ module "java_repo" {
   format        = "MAVEN"
 }
 
-output "google_container_cluster_cluster" {
-  value       = google_container_cluster_cluster_id
+output "repo-id" {
+  description = "Repository id."
+  value       = google_artifact_registry_repository.my-repo.id
 }
 
-output "google_sql_database_instance" {
-  value       = google_sql_database_instance_instance_id
+output "repo-name" {
+  description = "Repository name."
+  value       = google_artifact_registry_repository.my-repo.name
 }
 
-output "google_artifact_registry_repository_name" {
-  value       = google_artifact_registry_repository_name_id
+output "sql_connection_name" {
+  description = "Connection name of the primary instance."
+  value       = google_sql_database_instance_instance.connection_name
+
+
+output "cluster_name" {
+  description = "Cluster name."
+  value       = google_container_cluster.cluster.name
+}
+
+output "cluster_id" {
+  description = "Cluster ID."
+  value       = google_container_cluster.cluster.id
+}
+
+
+output "cluster_location" {
+  description = "Cluster location."
+  value       = google_container_cluster.cluster.location
 }

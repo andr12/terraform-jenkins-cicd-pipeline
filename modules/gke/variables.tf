@@ -6,11 +6,11 @@ variable "project" {
 variable "location" {
   type        = string
   description = "Region for cluster"
+  default = "us-central1"
 }
 
 variable "name" {
   type        = string
-  default     = "cluster"
   description = "Name of the cluster"
 }
 
@@ -38,7 +38,7 @@ variable "disk_type" {
 
 variable "node_count" {
   type        = number
-  default     = 1
+  default     = 3
   description = "Number of nodes per zone"
 }
 
@@ -57,17 +57,14 @@ variable "enable_autopilot" {
 variable "node_pool_name" {
   type        = string
   description = "Name of custom node pool"
-  default     = "Test1"
 }
 
 variable "cluster_network" {
   type        = string
   description = "Network for cluster"
-  default     = "network-epm-cedu"
 }
 
 variable "cluster_subnet" {
   type        = string
   description = "Subnet for cluster"
-  default     = "us-central1-a-network-epm-cedu-subnet"
 }
