@@ -5,8 +5,6 @@ mainAppname: spring-petclinic
 mainAppnameimage: us-central1-docker.pkg.dev/or2-msq-epm-cedu-t1iylu/petclinic-repo-halka/petclinic-app
 mainAppnameimagetag: latest
 mainAppcontainerPort: 8080
-mainAppDatabasehost: 127.0.0.1
-mainAppDatabasePort: 3306
 mainAppSpringProfile: mysql
 mainAppDatasourceMode: always
 sidecarAppname: cloud-sql-proxy

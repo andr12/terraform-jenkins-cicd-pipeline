@@ -22,9 +22,9 @@ spec:
         - containerPort: {{ .Values.mainAppcontainerPort }}
         env:
             - name: DB_HOST
-              value: {{ .Values.mainAppDatabasehost }}
+              value: "127.0.0.1"
             - name: DB_PORT
-              value: {{ .Values.mainAppDatabasePort }} 
+              value: "3306" 
             - name: MYSQL_USER
               value: {{ .Values.appUsername }}
             - name: MYSQL_PASS
