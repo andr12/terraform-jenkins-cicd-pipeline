@@ -1,7 +1,6 @@
-secretName: db-credentials
-appDatabase: cGV0Y2xpbmlj
-appUsername: cGV0Y2xpbmlj
-appUserpassword: cGV0Y2xpbmlj
+appDatabase: petclinic
+appUsername: petclinic
+appUserpassword: petclinic
 mainAppname: spring-petclinic
 mainAppnameimage: us-central1-docker.pkg.dev/or2-msq-epm-cedu-t1iylu/petclinic-repo-halka/petclinic-app
 mainAppnameimagetag: latest
