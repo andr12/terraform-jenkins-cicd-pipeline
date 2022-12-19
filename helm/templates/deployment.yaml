@@ -45,7 +45,7 @@ spec:
             - name: DATASOURCE_INIT_MODE
               value: always
       - name: {{ .Values.sidecarAppname }}
-        image: "{{ .Values.sidecarappnameimage }}:{{ .Values.sidecarappnameimagetag }}" 
+        image: "{{ .Values.sidecarAppnameimage }}:{{ .Values.sidecarAppnameimagetag }}" 
         command:
           - "/cloud_sql_proxy"
           - "-log_debug_stdout"
