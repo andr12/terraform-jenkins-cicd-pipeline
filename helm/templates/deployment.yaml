@@ -22,9 +22,9 @@ spec:
         - containerPort: {{ .Values.mainAppcontainerPort }}
         env:
             - name: DB_HOST
-              value: {{ .Values.mainAppcontainerDBHost }}
+              value: "{{ .Values.mainAppcontainerDBHost }}"
             - name: DB_PORT
-              value: {{ .Values.mainAppcontainerDBPort }} 
+              value: "{{ .Values.mainAppcontainerDBPort }}" 
             - name: MYSQL_USER
               value: {{ .Values.appUsername }}
             - name: MYSQL_PASS
@@ -45,5 +45,5 @@ spec:
           runAsNonRoot: true
         resources:
           requests:
-            memory: {{ .Values.sidecarAppnameMemory }}
-            cpu: {{ .Values.sidecarAppnameCpu }}
+            memory: "{{ .Values.sidecarAppnameMemory }}"
+            cpu: "{{ .Values.sidecarAppnameCpu }}"
