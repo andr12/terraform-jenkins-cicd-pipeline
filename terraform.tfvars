@@ -10,7 +10,7 @@ cluster_network       = "network-epm-cedu"
 cluster_subnet        = "us-central1-a-network-epm-cedu-subnet"
 image                 = "COS_CONTAINERD"
 node_pool_name        = "custom-pool"
-nodes_number          = "3"
+nodes_number          = "1"
 machine_type          = "n1-standard-2"
 service_account_email = "mentorship-infra-sa@or2-msq-epm-cedu-t1iylu.iam.gserviceaccount.com"
 
