@@ -1,6 +1,6 @@
-appDatabase: petclinic
-appUsername: petclinic
-appUserpassword: petclinic
+appDatabase: 
+appUsername: 
+appUserpassword: 
 mainAppname: spring-petclinic
 mainAppnameimage: us-central1-docker.pkg.dev/or2-msq-epm-cedu-t1iylu/petclinic-repo-halka/petclinic-app
 mainAppnameimagetag: latest
