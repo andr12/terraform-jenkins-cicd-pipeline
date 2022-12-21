@@ -1,30 +1,30 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata: 
-  name: {{ .Values.mainAppname }}
+  name: {{ .Values.mainAppname | default "spring-petclinic" | quote }}
   labels:
-    app: {{ .Values.mainAppname }}
+    app: {{ .Values.mainAppname | default "spring-petclinic" | quote }}
 spec: 
   replicas: {{ .Values.replicaCount }}
-  minReadySeconds: 20 
+  minReadySeconds: {{ .Values.minReadySeconds }} 
   selector: 
     matchLabels: 
-      app: {{ .Values.mainAppname }} 
+      app: {{ .Values.mainAppname | default "spring-petclinic" | quote }} 
   template : 
     metadata: 
       labels: 
-        app: {{ .Values.mainAppname }} 
+        app: {{ .Values.mainAppname | default "spring-petclinic" | quote }} 
     spec: 
       containers: 
-      - name: {{ .Values.mainAppname }} 
+      - name: {{ .Values.mainAppname | default "spring-petclinic" | quote }} 
         image: "{{ .Values.mainAppnameimage }}:{{ .Values.mainAppnameimagetag }}"
         ports:
         - containerPort: {{ .Values.mainAppcontainerPort }}
         env:
             - name: DB_HOST
-              value: "127.0.0.1"
+              value: {{ .Values.mainAppcontainerDBHost }}
             - name: DB_PORT
-              value: "3306" 
+              value: {{ .Values.mainAppcontainerDBPort }} 
             - name: MYSQL_USER
               value: {{ .Values.appUsername }}
             - name: MYSQL_PASS
@@ -45,5 +45,5 @@ spec:
           runAsNonRoot: true
         resources:
           requests:
-            memory: "2Gi"
-            cpu:    "1"
+            memory: {{ .Values.sidecarAppnameMemory }}
+            cpu: {{ .Values.sidecarAppnameCpu }}

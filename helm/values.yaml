@@ -4,6 +4,8 @@ appUserpassword: petclinic
 mainAppname: spring-petclinic
 mainAppnameimage: us-central1-docker.pkg.dev/or2-msq-epm-cedu-t1iylu/petclinic-repo-halka/petclinic-app
 mainAppnameimagetag: latest
+mainAppcontainerDBHost: "127.0.0.1"
+mainAppcontainerDBPort: "3306"
 mainAppcontainerPort: 8080
 mainAppSpringProfile: mysql
 mainAppDatasourceMode: always
@@ -12,6 +14,10 @@ sidecarAppnameimage: gcr.io/cloudsql-docker/gce-proxy
 sidecarAppnameimagetag: 1.28.0
 sidecarAppConnection: or2-msq-epm-cedu-t1iylu:us-central1:my-instance=tcp:3306
 replicaCount: 1
+minReadySeconds: 20
+sidecarAppnameMemory: "2Gi"
+sidecarAppnameCpu: "1"
+servicePortType: http
 servicePort: 80
 serviceTargetPort: 8080
 serviceType: LoadBalancer
